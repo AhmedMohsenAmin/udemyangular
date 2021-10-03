@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'udemyangular';
+  navigatedFeature = 'recipe';
+
+  onNavigate(feature: string) {
+    this.navigatedFeature = feature;
+    console.log(feature);
+  }
 }
