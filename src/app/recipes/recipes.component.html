@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-5">
+      <!--
+      old code to pass data from component to another now i use services
+        <app-recipe-list (recipeSelected)="lastSelectedRecipe = $event"></app-recipe-list>
+      */-->
+      <app-recipe-list></app-recipe-list>
+    </div>
+    <div class="col-md-7">
+
+      <router-outlet></router-outlet>
+        <!--
+                <app-recipe-detail *ngIf = "lastSelectedRecipe; else infoText" [selectedRecipeDetails] = "lastSelectedRecipe"></app-recipe-detail>
+         <ng-template #infoText>
+            <p>Please Select Recipe</p>
+        </ng-template> not needed after routing -->
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success">New Recipe</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <!-- *ngFor to loop throw the item in Recipes array ing ts file-->
+        <app-recipe-item  *ngFor="let RecipeEl of Recipes; let i = index"
+                          [recipe]="RecipeEl"
+                          [index]="i"
+                          ></app-recipe-item><!--(selectedRecipe) = "onRecipeSelected(RecipeEl)" not needed after routing -->
+    </div>
+</div>

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,34 +13,30 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { FormsModule } from '@angular/forms';
 import { DropdownDirectiveDirective } from './shared/dropdown-directive.directive';
-import {ShoppingListService} from "./shopping-list/shopping-list.service";
-import { AppRoutesModule } from './app.routes.module';
-import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
+import { ShoppingListService } from "./shopping-list/shopping-list.service";
+import {RecipeStartComponent} from "./recipes/recipe-start/recipe-start.component";
 
 
 
+
+const appRoutes: Routes = [
+    { path: "", redirectTo:"/recipes",pathMatch:"full"},
+    { path: "recipes", component: RecipesComponent,
+      children:[
+        {path:"",component:RecipeStartComponent,pathMatch:"full"},
+        {path:":id",component:RecipeDetailComponent}
+
+      ] },
+    { path: "ShoppingList", component: ShoppingListComponent }
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
-    DropdownDirectiveDirective,
-    RecipeStartComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    AppRoutesModule
-  ],
-  providers: [ShoppingListService],
-  bootstrap: [AppComponent]
+    imports:[
+        RouterModule.forRoot(appRoutes)
+    ],
+    exports: [RouterModule]
 })
 
-export class AppModule { }
+export class AppRoutesModule {
+
+}
