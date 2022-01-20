@@ -14,27 +14,31 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { FormsModule } from '@angular/forms';
 import { DropdownDirectiveDirective } from './shared/dropdown-directive.directive';
 import { ShoppingListService } from "./shopping-list/shopping-list.service";
-import {RecipeStartComponent} from "./recipes/recipe-start/recipe-start.component";
+import { RecipeStartComponent } from "./recipes/recipe-start/recipe-start.component";
+import { EditRecipeComponent } from "./recipes/edit-recipe/edit-recipe.component";
 
 
 
 
 const appRoutes: Routes = [
-    { path: "", redirectTo:"/recipes",pathMatch:"full"},
-    { path: "recipes", component: RecipesComponent,
-      children:[
-        {path:"",component:RecipeStartComponent,pathMatch:"full"},
-        {path:":id",component:RecipeDetailComponent}
-
-      ] },
-    { path: "ShoppingList", component: ShoppingListComponent }
+  { path: "", redirectTo: "/recipes", pathMatch: "full" },
+  {
+    path: "recipes", component: RecipesComponent,
+    children: [
+      { path: "", component: RecipeStartComponent, pathMatch: "full" },
+      { path: "new", component: EditRecipeComponent },
+      { path: ":id", component: RecipeDetailComponent },
+      { path: ":id/edit", component: EditRecipeComponent }
+    ]
+  },
+  { path: "ShoppingList", component: ShoppingListComponent }
 ];
 
 @NgModule({
-    imports:[
-        RouterModule.forRoot(appRoutes)
-    ],
-    exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(appRoutes)
+  ],
+  exports: [RouterModule]
 })
 
 export class AppRoutesModule {

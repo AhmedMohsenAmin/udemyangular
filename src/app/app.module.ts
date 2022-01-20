@@ -16,6 +16,7 @@ import { DropdownDirectiveDirective } from './shared/dropdown-directive.directiv
 import {ShoppingListService} from "./shopping-list/shopping-list.service";
 import { AppRoutesModule } from './app.routes.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
+import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
 
 
 
@@ -31,7 +32,8 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
     ShoppingListComponent,
     ShoppingEditComponent,
     DropdownDirectiveDirective,
-    RecipeStartComponent
+    RecipeStartComponent,
+    EditRecipeComponent
   ],
   imports: [
     BrowserModule,
